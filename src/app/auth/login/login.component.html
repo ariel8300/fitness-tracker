@@ -1,0 +1,38 @@
+<form
+  [formGroup]="loginForm"
+  (ngSubmit)="onSubmit()"
+  fxLayout="column"
+  fxLayoutAlign="center center"
+  fxLayoutGap="10px"
+>
+  <mat-form-field appearance="fill">
+    <input
+      type="email"
+      matInput
+      placeholder="Your email"
+      formControlName="email"
+      required
+    />
+    <mat-error>Invalid email</mat-error>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <input
+      type="password"
+      matInput
+      placeholder="Your password"
+      formControlName="password"
+      #pw
+    />
+    <mat-hint align="end">{{ pw.value.length }} / 6</mat-hint>
+    <mat-error align="start">Must contain at least 6 characters</mat-error>
+  </mat-form-field>
+  <button
+    type="submit"
+    mat-raised-button
+    color="primary"
+    [disabled]="loginForm.invalid"
+    fxFlexOffset="10px"
+  >
+    Log In
+  </button>
+</form>
